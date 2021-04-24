@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="main.css">
+    <title></title>
+  </head>
+  <body>
+    <div class="ajax_div">
+      <h1 id="heading_ajax">Welcome to AJAX</h1>
+      <form name="form1" method="post">
+        <div class="col">
+            <input name="name" type="text" placeholder="enter your name" id="nameFIeld" class="input" required>
+        </div>
+        <div class="col">
+            <input name="phone" type="text" placeholder="enter your phone" id="phoneFIeld" class="input" required>
+        </div>
+        <div class="col">
+            <input name="email" type="email" placeholder="enter your email" id="emailFIeld" class="input" required>
+        </div>
+        <div class="col">
+          <button type="submit" name="button" class="SaveBtn">Save Contact</button>
+        </div>
+      </form>
+
+      <table class="table">
+        <thead id="t_head">
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="header">
+      <h1 id = "my-heading">Mezbah</h1>
+      <button type="button" id="click" name="button">Show</button>
+      <ul id="fetchData"></ul>
+      <p class= "para">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in.</p>
+      <ul id="mylist"> </ul>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+        <input type="text" name="" value="" placeholder="enter your name" class="form-control" id="form_input" >
+        <ul id="nameList"></ul>
+      </div>
+    </div>
+    <script src="bundle.js">
+
+    </script>
+  </body>
+</html>
