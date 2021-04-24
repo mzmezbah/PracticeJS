@@ -384,25 +384,25 @@ import './form'
 
 import axios from 'axios'
 
-function $(selector){
+function $(selector) {
   return document.querySelector(selector);
 }
 
 
 let button = {
-  borderRadius : '20px',
-  paddingLeft : '70px',
+  borderRadius: '20px',
+  paddingLeft: '70px',
   paddingRight: '70px',
-  paddingTop : '10px',
-  paddingBottom : '10px',
-  border : '1px solid #fff',
-  backgroundColor : '#009933',
-  color : '#fff',
-  display : 'inline-block',
+  paddingTop: '10px',
+  paddingBottom: '10px',
+  border: '1px solid #fff',
+  backgroundColor: '#009933',
+  color: '#fff',
+  display: 'inline-block',
   backfaceVisibility: 'hidden',
-  outline : 'none',
+  outline: 'none',
   // padding:'60px',
-  textAlign :'center',
+  textAlign: 'center',
 
 }
 
@@ -415,21 +415,21 @@ let show = false
 
 btn.addEventListener('click', () => {
 
-    if (show) {
-      show = false;
-      for (let e of para) {
-        e.style.visibility = 'hidden';
-      }
-      // para.style.visibility = 'hidden';
-      btn.innerHTML = 'Show';
-    }else{
-      show = true;
-      for (let e of para) {
-        e.style.visibility = 'visible';
-      }
-      // para.style.visibility = 'visible';
-      btn.innerHTML= 'Hide';
+  if (show) {
+    show = false;
+    for (let e of para) {
+      e.style.visibility = 'hidden';
     }
+    // para.style.visibility = 'hidden';
+    btn.innerHTML = 'Show';
+  } else {
+    show = true;
+    for (let e of para) {
+      e.style.visibility = 'visible';
+    }
+    // para.style.visibility = 'visible';
+    btn.innerHTML = 'Hide';
+  }
 })
 
 Object.assign(btn.style, button)
@@ -459,42 +459,42 @@ let ul = $('#nameList');
 
 
 input_form.addEventListener('keypress', function (event) {
-if(event.keyCode ===  13){
-  let name = event.target.value
-  createli(ul,name)
-  event.target.value = ''
-}
+  if (event.keyCode === 13) {
+    let name = event.target.value
+    createli(ul, name)
+    event.target.value = ''
+  }
 })
 
 
-function createli(ul,name) {
-    let li = document.createElement('li')
-    li.className = 'nameListItem'
-    li.innerHTML = name
-    // li.style.display = 'flex'
-    li.style.listStyleType = 'none';
-    li.style.border = '1px solid red'
+function createli(ul, name) {
+  let li = document.createElement('li')
+  li.className = 'nameListItem'
+  li.innerHTML = name
+  // li.style.display = 'flex'
+  li.style.listStyleType = 'none';
+  li.style.border = '1px solid red'
 
 
-    let span= document.createElement('span')
-    span.className = 'delete_item';
-    // span.className = 'ml-auto';
-    span.innerHTML = 'X';
-    span.style.display = 'inline-block';
-    // span.style.justifyContent = 'flex-end';
-    span.style.float = 'right';
-    span.style.marginRight = '10px'
-    span.style.cursor = 'pointer'
+  let span = document.createElement('span')
+  span.className = 'delete_item';
+  // span.className = 'ml-auto';
+  span.innerHTML = 'X';
+  span.style.display = 'inline-block';
+  // span.style.justifyContent = 'flex-end';
+  span.style.float = 'right';
+  span.style.marginRight = '10px'
+  span.style.cursor = 'pointer'
 
 
-    li.appendChild(span)
-    span.addEventListener('click', () => {
-      ul.removeChild(li)
-    })
+  li.appendChild(span)
+  span.addEventListener('click', () => {
+    ul.removeChild(li)
+  })
 
 
 
-    ul.appendChild(li)
+  ul.appendChild(li)
 }
 
 
@@ -522,51 +522,51 @@ let url = 'https://jsonplaceholder.typicode.com/users';
 
 // WELCOME TO AJAX--------------------------------------------------------------
 
-btn.addEventListener('click', ()=> {
+btn.addEventListener('click', () => {
 
-      let tbody = $('#tbody')
+  let tbody = $('#tbody')
 
-    // axios.get(url)
-    // .then(res => {
-    //   res.data.forEach(Contact => {
-    //       console.log(Contact);
-    //         createTdElement(Contact,tbody)
-    //   })
-    // })
-    // .catch(err => console.log(err))
-
-    const dbData = JSON.parse(localStorage.getItem('db1'))
-    dbData.forEach(Contact => {
-        createTdElement(Contact,tbody)
+  axios.get(url)
+    .then(res => {
+      res.data.forEach(Contact => {
+        console.log(Contact);
+        createTdElement(Contact, tbody)
+      })
     })
+    .catch(err => console.log(err))
+
+  const dbData = JSON.parse(localStorage.getItem('db1'))
+  dbData.forEach(Contact => {
+    createTdElement(Contact, tbody)
   })
+})
 
 
 
 function createTdElement(Contact, parentsElement) {
-      let TR = document.createElement('tr')
-      let TdName = document.createElement('td')
-        TdName.innerHTML = Contact.name
-        TR.appendChild(TdName)
-      let TdPhone = document.createElement('td')
-        TdPhone.innerHTML = Contact.phone ? Contact.phone : 'N/A'
-        TR.appendChild(TdPhone)
-      let TdEmail = document.createElement('td')
-        TdEmail.innerHTML = Contact.email ? Contact.email : 'N/A'
-        TR.appendChild(TdEmail)
-      let TdAction = document.createElement('td')
-        let editBtn = document.createElement('button')
-        editBtn.className = 'edit'
-        editBtn.innerHTML = 'Edit'
-        editBtn.addEventListener('click', () => alert('i am clicked'))
-        TdAction.appendChild(editBtn)
-        let deleteBtn = document.createElement('button')
-        deleteBtn.className = 'delete'
-        deleteBtn.innerHTML = 'Delete'
-        deleteBtn.addEventListener('click', () => alert( 'i am clicked'))
-        TdAction.appendChild(deleteBtn)
-        TR.appendChild(TdAction)
-        parentsElement.appendChild(TR)
+  let TR = document.createElement('tr')
+  let TdName = document.createElement('td')
+  TdName.innerHTML = Contact.name
+  TR.appendChild(TdName)
+  let TdPhone = document.createElement('td')
+  TdPhone.innerHTML = Contact.phone ? Contact.phone : 'N/A'
+  TR.appendChild(TdPhone)
+  let TdEmail = document.createElement('td')
+  TdEmail.innerHTML = Contact.email ? Contact.email : 'N/A'
+  TR.appendChild(TdEmail)
+  let TdAction = document.createElement('td')
+  let editBtn = document.createElement('button')
+  editBtn.className = 'edit'
+  editBtn.innerHTML = 'Edit'
+  editBtn.addEventListener('click', () => alert('i am clicked'))
+  TdAction.appendChild(editBtn)
+  let deleteBtn = document.createElement('button')
+  deleteBtn.className = 'delete'
+  deleteBtn.innerHTML = 'Delete'
+  deleteBtn.addEventListener('click', () => alert('i am clicked'))
+  TdAction.appendChild(deleteBtn)
+  TR.appendChild(TdAction)
+  parentsElement.appendChild(TR)
 
 }
 
@@ -574,37 +574,37 @@ let saveBtn = $('.SaveBtn')
 let tbody = $('#tbody')
 let name = $('#nameFIeld').value;
 let phone = $('#phoneFIeld').value;
-let email = $('#emailFIeld').value
+let email = $('#emailFIeld').value;
 
 saveBtn.addEventListener('click', () => {
   let tr = document.createElement('tr')
   let tdName = document.createElement('td')
-    tdName.innerHTML = name
-    tr.appendChild(tdName)
+  tdName.innerHTML = name
+  tr.appendChild(tdName)
   let tdPhone = document.createElement('td')
-    tdPhone.innerHTML = phone
-    tr.appendChild(tdPhone)
+  tdPhone.innerHTML = phone
+  tr.appendChild(tdPhone)
   let tdEmail = document.createElement('td')
-      tdEmail.innerHTML = email
+  tdEmail.innerHTML = email
   let tdAction = document.createElement('td')
-    let edit = document.createElement('button')
-      edit.className = 'edit'
-      edit.innerHTML = 'Edit'
-        edit.addEventListener('click', () => {
-          alert('i am edit')
-        })
-      tdAction.appendChild(edit)
+  let edit = document.createElement('button')
+  edit.className = 'edit'
+  edit.innerHTML = 'Edit'
+  edit.addEventListener('click', () => {
+    alert('i am edit')
+  })
+  tdAction.appendChild(edit)
 
-    let del = document.createElement('button')
-      del.innerHTML = 'Delete'
-      del.className = 'delete'
-      del.addEventListener('click', () => {
-        alert('i am delete')
-      })
-      tdAction.appendChild(del)
+  let del = document.createElement('button')
+  del.innerHTML = 'Delete'
+  del.className = 'delete'
+  del.addEventListener('click', () => {
+    alert('i am delete')
+  })
+  tdAction.appendChild(del)
 
-    tr.appendChild(tdAction)
+  tr.appendChild(tdAction)
 
-    tbody.appendChild(tr)
+  tbody.appendChild(tr)
 
 })
