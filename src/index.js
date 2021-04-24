@@ -529,16 +529,16 @@ btn.addEventListener('click', () => {
   axios.get(url)
     .then(res => {
       res.data.forEach(Contact => {
-        console.log(Contact);
+        // console.log(Contact);
         createTdElement(Contact, tbody)
       })
     })
     .catch(err => console.log(err))
 
-  const dbData = JSON.parse(localStorage.getItem('db1'))
-  dbData.forEach(Contact => {
-    createTdElement(Contact, tbody)
-  })
+  // const dbData = JSON.parse(localStorage.getItem('db1'))
+  // dbData.forEach(Contact => {
+  //   createTdElement(Contact, tbody)
+  // })
 })
 
 
@@ -575,6 +575,12 @@ let tbody = $('#tbody')
 let name = $('#nameFIeld').value;
 let phone = $('#phoneFIeld').value;
 let email = $('#emailFIeld').value;
+
+// const form = document.forms['form1']
+
+// const name = form['name'].value
+// const email = form['email'].value
+// const phone = form['phone'].value
 
 saveBtn.addEventListener('click', () => {
   let tr = document.createElement('tr')
